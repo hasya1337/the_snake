@@ -45,7 +45,8 @@ class GameObject:
 
     def draw(self):
         """Отрисовывает объект на экране."""
-        rect = pygame.Rect(self.position[0], self.position[1], GRID_SIZE, GRID_SIZE)
+        rect = pygame.Rect(self.position[0], self.position[1],
+                           GRID_SIZE, GRID_SIZE)
         pygame.draw.rect(screen, self.color, rect)
         pygame.draw.rect(screen, BORDER_COLOR, rect, 1)
 
@@ -76,8 +77,8 @@ class Snake:
 
     def __init__(self):
         """
-        Инициализирует змейку в центре игрового поля с случайным направлением
-        движения.
+        Инициализирует змейку в центре игрового поля с случайным
+        направлением движения.
         """
         self.positions = [(SCREEN_WIDTH // 2, SCREEN_HEIGHT // 2)]
         self.direction = choice([UP, DOWN, LEFT, RIGHT])
