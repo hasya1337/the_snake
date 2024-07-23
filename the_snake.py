@@ -55,9 +55,7 @@ class Apple(GameObject):
     """Класс, описывающий яблоко."""
 
     def __init__(self):
-        """
-        Инициализирует яблоко с случайной позицией на игровом поле.
-        """
+        """Инициализирует яблоко с случайной позицией на игровом поле."""
         position = (
             randint(0, GRID_WIDTH - 1) * GRID_SIZE,
             randint(0, GRID_HEIGHT - 1) * GRID_SIZE,
