@@ -31,9 +31,7 @@ clock = pygame.time.Clock()
 
 
 class GameObject:
-    """
-    Базовый класс для игровых объектов.
-    """
+    """Базовый класс для игровых объектов."""
 
     def __init__(self, position, color):
         """
@@ -53,32 +51,33 @@ class GameObject:
 
 
 class Apple(GameObject):
-    """
-    Класс, описывающий яблоко.
-    """
+    """Класс, описывающий яблоко."""
 
     def __init__(self):
         """
         Инициализирует яблоко с случайной позицией на игровом поле.
         """
-        position = (randint(0, GRID_WIDTH - 1) * GRID_SIZE,
-                    randint(0, GRID_HEIGHT - 1) * GRID_SIZE)
+        position = (
+            randint(0, GRID_WIDTH - 1) * GRID_SIZE,
+            randint(0, GRID_HEIGHT - 1) * GRID_SIZE,
+        )
         super().__init__(position, APPLE_COLOR)
 
     def reset_position(self):
         """Перемещает яблоко на новую случайную позицию."""
-        self.position = (randint(0, GRID_WIDTH - 1) * GRID_SIZE,
-                         randint(0, GRID_HEIGHT - 1) * GRID_SIZE)
+        self.position = (
+            randint(0, GRID_WIDTH - 1) * GRID_SIZE,
+            randint(0, GRID_HEIGHT - 1) * GRID_SIZE,
+        )
 
 
 class Snake:
-    """
-    Класс, описывающий змейку.
-    """
+    """Класс, описывающий змейку."""
 
     def __init__(self):
         """
-        Инициализирует змейку в центре игрового поля с случайным направлением движения.
+        Инициализирует змейку в центре игрового поля с случайным направлением
+        движения.
         """
         self.positions = [(SCREEN_WIDTH // 2, SCREEN_HEIGHT // 2)]
         self.direction = choice([UP, DOWN, LEFT, RIGHT])
@@ -97,8 +96,10 @@ class Snake:
     def move(self):
         """Перемещает змейку в текущем направлении."""
         head_x, head_y = self.get_head_position()
-        new_head = ((head_x + self.direction[0] * GRID_SIZE) % SCREEN_WIDTH,
-                    (head_y + self.direction[1] * GRID_SIZE) % SCREEN_HEIGHT)
+        new_head = (
+            (head_x + self.direction[0] * GRID_SIZE) % SCREEN_WIDTH,
+            (head_y + self.direction[1] * GRID_SIZE) % SCREEN_HEIGHT,
+        )
 
         if new_head in self.positions[2:]:
             self.reset()
@@ -154,9 +155,7 @@ def update_direction(snake):
 
 
 def main():
-    """
-    Основная функция игры.
-    """
+    """Основная функция игры."""
     pygame.init()
     apple = Apple()
     snake = Snake()
