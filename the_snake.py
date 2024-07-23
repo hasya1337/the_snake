@@ -31,6 +31,10 @@ clock = pygame.time.Clock()
 
 
 class GameObject:
+    """
+    Базовый класс для игровых объектов.
+    """
+
     def __init__(self, position, color):
         """
         Инициализирует объект игры.
@@ -49,19 +53,29 @@ class GameObject:
 
 
 class Apple(GameObject):
+    """
+    Класс, описывающий яблоко.
+    """
+
     def __init__(self):
         """
         Инициализирует яблоко с случайной позицией на игровом поле.
         """
-        position = (randint(0, GRID_WIDTH - 1) * GRID_SIZE, randint(0, GRID_HEIGHT - 1) * GRID_SIZE)
+        position = (randint(0, GRID_WIDTH - 1) * GRID_SIZE,
+                    randint(0, GRID_HEIGHT - 1) * GRID_SIZE)
         super().__init__(position, APPLE_COLOR)
 
     def reset_position(self):
         """Перемещает яблоко на новую случайную позицию."""
-        self.position = (randint(0, GRID_WIDTH - 1) * GRID_SIZE, randint(0, GRID_HEIGHT - 1) * GRID_SIZE)
+        self.position = (randint(0, GRID_WIDTH - 1) * GRID_SIZE,
+                         randint(0, GRID_HEIGHT - 1) * GRID_SIZE)
 
 
 class Snake:
+    """
+    Класс, описывающий змейку.
+    """
+
     def __init__(self):
         """
         Инициализирует змейку в центре игрового поля с случайным направлением движения.
@@ -140,7 +154,9 @@ def update_direction(snake):
 
 
 def main():
-    """Основная функция игры."""
+    """
+    Основная функция игры.
+    """
     pygame.init()
     apple = Apple()
     snake = Snake()
