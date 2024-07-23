@@ -45,7 +45,8 @@ class GameObject:
 
     def draw(self):
         """Отрисовывает объект на экране."""
-        rect = pygame.Rect(self.position[0], self.position[1], GRID_SIZE, GRID_SIZE)
+        rect = pygame.Rect(self.position[0], self.position[1],
+                           GRID_SIZE, GRID_SIZE)
         pygame.draw.rect(screen, self.body_color, rect)
         pygame.draw.rect(screen, BORDER_COLOR, rect, 1)
 
@@ -54,9 +55,7 @@ class Apple(GameObject):
     """Класс, описывающий яблоко."""
 
     def __init__(self):
-        """
-        Инициализирует яблоко с случайной позицией на игровом поле.
-        """
+        """Инициализирует яблоко с случайной позицией на игровом поле."""
         position = (
             randint(0, GRID_WIDTH - 1) * GRID_SIZE,
             randint(0, GRID_HEIGHT - 1) * GRID_SIZE,
@@ -76,7 +75,8 @@ class Snake(GameObject):
 
     def __init__(self):
         """
-        Инициализирует змейку в центре игрового поля с случайным направлением движения.
+        Инициализирует змейку в центре игрового
+        поля с случайным направлением движения.
         """
         super().__init__((SCREEN_WIDTH // 2, SCREEN_HEIGHT // 2), SNAKE_COLOR)
         self.positions = [self.position]
@@ -115,7 +115,10 @@ class Snake(GameObject):
         self.length = 1
 
     def update_direction(self):
-        """Обновляет направление движения змейки на основе следующего направления."""
+        """
+        Обновляет направление движения
+        змейки на основе следующего направления.
+        """
         if self.next_direction:
             self.direction = self.next_direction
 
