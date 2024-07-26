@@ -29,6 +29,7 @@ pygame.display.set_caption('Змейка')
 # Настройка времени
 clock = pygame.time.Clock()
 
+
 class GameObject:
     """Базовый класс для игровых объектов."""
 
@@ -52,6 +53,7 @@ class GameObject:
         pygame.draw.rect(screen, self.body_color, rect)
         pygame.draw.rect(screen, BORDER_COLOR, rect, 1)
 
+
 class Apple(GameObject):
     """Класс, описывающий яблоко."""
 
@@ -66,6 +68,7 @@ class Apple(GameObject):
             randint(0, GRID_WIDTH - 1) * GRID_SIZE,
             randint(0, GRID_HEIGHT - 1) * GRID_SIZE,
         )
+
 
 class Snake(GameObject):
     """Класс, описывающий змейку."""
@@ -103,8 +106,9 @@ class Snake(GameObject):
     def update_direction(self, new_direction):
         """Обновляет направление движения змейки."""
         if (new_direction[0] * self.direction[0] == 0 and
-            new_direction[1] * self.direction[1] == 0):
+                new_direction[1] * self.direction[1] == 0):
             self.direction = new_direction
+
 
 def handle_keys(snake):
     """
@@ -125,6 +129,7 @@ def handle_keys(snake):
         elif event.type == pygame.KEYDOWN:
             if event.key in key_mapping:
                 snake.update_direction(key_mapping[event.key])
+
 
 def main():
     """Основная функция игры."""
@@ -150,6 +155,7 @@ def main():
         snake.draw()
         apple.draw()
         pygame.display.update()
+
 
 if __name__ == '__main__':
     main()
