@@ -105,8 +105,8 @@ class Snake(GameObject):
 
     def update_direction(self, new_direction):
         """Обновляет направление движения змейки."""
-        if (new_direction[0] * self.direction[0] == 0
-            and new_direction[1] * self.direction[1] == 0):
+        if (new_direction[0] * self.direction[0] == 0 and
+                new_direction[1] * self.direction[1] == 0):
             self.direction = new_direction
 
 
