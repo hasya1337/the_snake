@@ -29,12 +29,11 @@ pygame.display.set_caption('Змейка')
 # Настройка времени
 clock = pygame.time.Clock()
 
+DEFAULT_POSITION = (0, 0)
+DEFAULT_COLOR = (255, 255, 255)
 
 class GameObject:
     """Базовый класс для игровых объектов."""
-
-    DEFAULT_POSITION = (0, 0)
-    DEFAULT_COLOR = (255, 255, 255)
 
     def __init__(self, position=DEFAULT_POSITION, color=DEFAULT_COLOR):
         """
@@ -57,9 +56,9 @@ class GameObject:
 class Apple(GameObject):
     """Класс, описывающий яблоко."""
 
-    def __init__(self):
+    def __init__(self, color=APPLE_COLOR):
         """Инициализирует яблоко с случайной позицией на игровом поле."""
-        super().__init__(color=APPLE_COLOR)
+        super().__init__(color=color)
         self.randomize_position()
 
     def randomize_position(self):
@@ -73,9 +72,9 @@ class Apple(GameObject):
 class Snake(GameObject):
     """Класс, описывающий змейку."""
 
-    def __init__(self):
+    def __init__(self, color=SNAKE_COLOR):
         """Инициализирует змейку."""
-        super().__init__(color=SNAKE_COLOR)
+        super().__init__(color=color)
         self.reset()
 
     def get_head_position(self):
