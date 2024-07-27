@@ -24,13 +24,14 @@ SPEED = 10
 
 # Настройка игрового окна
 screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT), 0, 32)
-pygame.display.set_caption('Змейка')
+pygame.display.set_caption("Змейка")
 
 # Настройка времени
 clock = pygame.time.Clock()
 
 DEFAULT_POSITION = (0, 0)
 DEFAULT_COLOR = (255, 255, 255)
+
 
 class GameObject:
     """Базовый класс для игровых объектов."""
@@ -47,7 +48,7 @@ class GameObject:
 
     def draw(self):
         """Отрисовывает объект на экране."""
-        rect = pygame.Rect(self.position[0], self.position[1],
+        rect = pygame.Rect(self.position[0], self.position[1], 
                            GRID_SIZE, GRID_SIZE)
         pygame.draw.rect(screen, self.body_color, rect)
         pygame.draw.rect(screen, BORDER_COLOR, rect, 1)
@@ -104,8 +105,10 @@ class Snake(GameObject):
 
     def update_direction(self, new_direction):
         """Обновляет направление движения змейки."""
-        if (new_direction[0] * self.direction[0] == 0
-                and new_direction[1] * self.direction[1] == 0):
+        if (
+            new_direction[0] * self.direction[0] == 0
+            and new_direction[1] * self.direction[1] == 0
+        ):
             self.direction = new_direction
 
 
@@ -119,7 +122,7 @@ def handle_keys(snake):
         pygame.K_UP: UP,
         pygame.K_DOWN: DOWN,
         pygame.K_LEFT: LEFT,
-        pygame.K_RIGHT: RIGHT
+        pygame.K_RIGHT: RIGHT,
     }
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
@@ -156,5 +159,5 @@ def main():
         pygame.display.update()
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()
